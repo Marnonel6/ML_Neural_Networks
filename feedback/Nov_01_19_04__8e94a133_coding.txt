@@ -1,0 +1,92 @@
+============================= test session starts ==============================
+platform linux -- Python 3.9.15, pytest-7.2.0, pluggy-1.0.0
+rootdir: /workspace
+collected 17 items
+tests/test_a_environment.py .                                            [  5%]
+tests/test_a_setup.py .                                                  [ 11%]
+tests/test_custom_transform.py F                                         [ 17%]
+tests/test_loss.py FF                                                    [ 29%]
+tests/test_model.py FFFF                                                 [ 52%]
+tests/test_perceptron.py ..                                              [ 64%]
+tests/test_regularization.py ..F                                         [ 82%]
+tests/test_relu.py FFF                                                   [100%]
+=================================== FAILURES ===================================
+____________________________ test_custom_transform _____________________________
+>       new_X = custom_transform(X)
+tests/test_custom_transform.py:11:
+>       raise NotImplementedError
+E       NotImplementedError
+src/data_transform.py:22: NotImplementedError
+___________________________ test_squared_loss_basics ___________________________
+>       assert loss.forward(A, B) == mean_squared_error(A, B)
+tests/test_loss.py:18:
+>       raise NotImplementedError
+E       NotImplementedError
+src/loss.py:49: NotImplementedError
+____________________________ test_squared_loss_fit _____________________________
+>       pred_before = model.forward(X)
+tests/test_loss.py:48:
+>       self.layers.forward(X)
+E       AttributeError: 'list' object has no attribute 'forward'
+src/model.py:37: AttributeError
+______________________________ test_model_forward ______________________________
+>       pred = model.forward(X)
+tests/test_model.py:17:
+>       self.layers.forward(X)
+E       AttributeError: 'list' object has no attribute 'forward'
+src/model.py:37: AttributeError
+_____________________________ test_model_backward ______________________________
+>           model.backward(0.5 * np.ones_like(y), y)
+tests/test_model.py:51:
+>       raise NotImplementedError
+E       NotImplementedError
+src/model.py:53: NotImplementedError
+______________________________ test_model_fit_xor ______________________________
+>       pred_before = model.forward(X)
+tests/test_model.py:93:
+>       self.layers.forward(X)
+E       AttributeError: 'list' object has no attribute 'forward'
+src/model.py:37: AttributeError
+____________________________ test_model_fit_circles ____________________________
+>       model.fit(X, y, max_iter)
+tests/test_model.py:146:
+>       raise NotImplementedError
+E       NotImplementedError
+src/model.py:66: NotImplementedError
+_______________________ test_regularization_fit_circles ________________________
+>               model.fit(X, y, 100)
+tests/test_regularization.py:72:
+>       raise NotImplementedError
+E       NotImplementedError
+src/model.py:66: NotImplementedError
+_______________________________ test_relu_basics _______________________________
+>       forward = relu.forward(X)
+tests/test_relu.py:17:
+>       raise NotImplementedError
+E       NotImplementedError
+src/layers.py:44: NotImplementedError
+______________________________ test_relu_fit_xor _______________________________
+>       pred_before = model.forward(X)
+tests/test_relu.py:47:
+>       self.layers.forward(X)
+E       AttributeError: 'list' object has no attribute 'forward'
+src/model.py:37: AttributeError
+____________________________ test_relu_fit_circles _____________________________
+>       model.fit(X, y, 3000)
+tests/test_relu.py:74:
+>       raise NotImplementedError
+E       NotImplementedError
+src/model.py:66: NotImplementedError
+=========================== short test summary info ============================
+FAILED tests/test_custom_transform.py::test_custom_transform - NotImplemented...
+FAILED tests/test_loss.py::test_squared_loss_basics - NotImplementedError
+FAILED tests/test_loss.py::test_squared_loss_fit - AttributeError: 'list' obj...
+FAILED tests/test_model.py::test_model_forward - AttributeError: 'list' objec...
+FAILED tests/test_model.py::test_model_backward - NotImplementedError
+FAILED tests/test_model.py::test_model_fit_xor - AttributeError: 'list' objec...
+FAILED tests/test_model.py::test_model_fit_circles - NotImplementedError
+FAILED tests/test_regularization.py::test_regularization_fit_circles - NotImp...
+FAILED tests/test_relu.py::test_relu_basics - NotImplementedError
+FAILED tests/test_relu.py::test_relu_fit_xor - AttributeError: 'list' object ...
+FAILED tests/test_relu.py::test_relu_fit_circles - NotImplementedError
+========================= 11 failed, 6 passed in 1.84s =========================
